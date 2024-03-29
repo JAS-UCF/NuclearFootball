@@ -1,10 +1,12 @@
 # NuclearFootball
 
-code base for handing connectivity to the test stand base station
+code suite to interface with mosquito (MQTT BROKER) and record information from the ESP32 Warhead project
 
 ## RPI
 
-the rpi code will allow us to see live sensor readouts as the launch key is sending the information to us
+RPI will subscribe to topics relating to sensor information coming from the ESP32
+RPI will record all relevant information coming from the MQTT topics
+RPI will publish back to topics relatiing to safety and shutoff
 
 ### SETUP
 
