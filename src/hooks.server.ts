@@ -10,6 +10,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 // everything in this file is run on compile time and run on the server side
 
 client.on("message", (t, m) => {
-  console.log("New Message : ");
-  console.log(m.toJSON());
+  console.log("New Message : " + t);
 })
