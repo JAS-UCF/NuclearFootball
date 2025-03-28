@@ -151,9 +151,6 @@
 					</div>
 				</div>
 			</Card.Content>
-			<Card.Footer>
-				<p>Card Footer</p>
-			</Card.Footer>
 		</Card.Root>
 		<Card.Root>
 			<Card.Header>
@@ -174,9 +171,6 @@
 					</div>
 				</div>
 			</Card.Content>
-			<Card.Footer>
-				<p>Card Footer</p>
-			</Card.Footer>
 		</Card.Root>
 	</div>
 	<Card.Root>
@@ -200,8 +194,7 @@
 			</span>
 			<Input placeholder="15" type="number" bind:value={scalingFactor} />
 		</Card.Content>
-		<Card.Footer>
-			<p>Card Footer</p>
-		</Card.Footer>
 	</Card.Root>
+
+	<div class="grid grid-cols-1 lg:grid-cols-3"></div>
 </div>
