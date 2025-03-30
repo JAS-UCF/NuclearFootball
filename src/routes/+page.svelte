@@ -8,6 +8,8 @@
 	import type { DecodedMessage, Message } from '$lib/types';
 	import TemperatureChart from '$lib/components/custom/TemperatureChart.svelte';
 	import { untrack } from 'svelte';
+	import { Switch } from '$lib/components/ui/switch';
+	import { enhance } from '$app/forms';
 	// import TemperatureChart from '$lib/components/custom/TemperatureChart.svelte';
 
 	const value = source('/events').select('message');
@@ -22,6 +24,9 @@
 		oilPressure = $state(0),
 		force = $state(0),
 		scalingFactor = $state(1),
+		r1 = $state(false),
+		r2 = $state(false),
+		r3 = $state(false),
 		last30TemperatureTC1 = $state([{ x: 0, value: 0 }]),
 		last30TemperatureTC2 = $state([{ x: 0, value: 0 }]),
 		last30TemperatureTC3 = $state([{ x: 0, value: 0 }]),
@@ -196,5 +201,53 @@
 		</Card.Content>
 	</Card.Root>
 
-	<div class="grid grid-cols-1 lg:grid-cols-3"></div>
+	<div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+		<Card.Root>
+			<Card.Header>
+				<Card.Title>Relay Drive 1</Card.Title>
+				<Card.Description
+					>Relay state is currently: <strong>{r1}</strong>
+					<br />
+					Click the switch below to change the state of the relay, and the text above will update!
+				</Card.Description>
+			</Card.Header>
+			<Card.Content>
+				<Switch />
+			</Card.Content>
+		</Card.Root>
+		<Card.Root>
+			<Card.Header>
+				<Card.Title>Relay Drive 2</Card.Title>
+				<Card.Description
+					>Relay state is currently: <strong>{r2}</strong>
+					<br />
+					Click the switch below to change the state of the relay, and the text above will update!
+				</Card.Description>
+			</Card.Header>
+			<Card.Content>
+				<Switch />
+			</Card.Content>
+		</Card.Root>
+		<Card.Root>
+			<Card.Header>
+				<Card.Title>Relay Drive 3</Card.Title>
+				<Card.Description
+					>Relay state is currently: <strong>{r3}</strong>
+					<br />
+					Click the switch below to change the state of the relay, and the text above will update!
+				</Card.Description>
+			</Card.Header>
+			<Card.Content>
+				<form action="?/relay1" method="post" use:enhance>
+					<Switch
+						onchange={() => {
+							document.getElementById('R1')?.click();
+						}}
+						bind:value={r1}
+					/>
+					<button type="submit" class="hidden" id="R1">submitR1</button>
+				</form>
+			</Card.Content>
+		</Card.Root>
+	</div>
 </div>
