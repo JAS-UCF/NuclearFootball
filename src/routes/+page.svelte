@@ -92,6 +92,11 @@
 			last30TemperatureTC4 = untrack(() =>
 				updateArray(last30TemperatureTC4, { x: index, value: newT4 })
 			);
+
+			r1 = currentDecodedValue.Relays.r1;
+			r2 = currentDecodedValue.Relays.r2;
+			r3 = currentDecodedValue.Relays.r3;
+			r4 = currentDecodedValue.Relays.r4;
 		} catch (error) {
 			console.warn(error);
 		}
@@ -212,7 +217,15 @@
 				</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<Switch />
+				<Switch
+					onclick={() => {
+						document.getElementById('R1')?.click();
+					}}
+					bind:checked={r1}
+				/>
+				<form action="?/relay1" method="POST" use:enhance>
+					<button type="submit" class="hidden" id="R1">Relay1</button>
+				</form>
 			</Card.Content>
 		</Card.Root>
 		<Card.Root>
@@ -225,7 +238,15 @@
 				</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<Switch />
+				<Switch
+					onclick={() => {
+						document.getElementById('R2')?.click();
+					}}
+					bind:checked={r2}
+				/>
+				<form action="?/relay2" method="POST" use:enhance>
+					<button type="submit" class="hidden" id="R2">Relay2</button>
+				</form>
 			</Card.Content>
 		</Card.Root>
 		<Card.Root>
@@ -238,14 +259,14 @@
 				</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<form action="?/relay1" method="post" use:enhance>
-					<Switch
-						onchange={() => {
-							document.getElementById('R1')?.click();
-						}}
-						bind:value={r1}
-					/>
-					<button type="submit" class="hidden" id="R1">submitR1</button>
+				<Switch
+					onclick={() => {
+						document.getElementById('R3')?.click();
+					}}
+					bind:checked={r3}
+				/>
+				<form action="?/relay3" method="POST" use:enhance>
+					<button type="submit" class="hidden" id="R3">Relay3</button>
 				</form>
 			</Card.Content>
 		</Card.Root>

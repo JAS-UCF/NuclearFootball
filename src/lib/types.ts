@@ -18,6 +18,12 @@ export interface DecodedMessage {
     pressure: number,
     temperature: number,
   },
+  Relays: {
+    r1: boolean,
+    r2: boolean,
+    r3: boolean,
+    r4: boolean,
+  },
   force: number
 
 }
